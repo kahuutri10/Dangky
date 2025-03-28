@@ -1,138 +1,97 @@
-/* Reset CSS */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-  }
-  
-  /* Container tổng */
-  .signup-container {
-    display: flex;
-    height: 100vh;
-    background-color: #0f172a;
-  }
-  
-  /* Phần bên trái */
-  .signup-left {
-    width: 40%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #4f46e5;
-    color: white;
-    padding: 20px;
-    border-radius: 0 20px 20px 0;
-    text-align: center;
-  }
-  
-  .signup-left h1 {
-    font-size: 28px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .signup-left p {
-    font-size: 16px;
-    margin-bottom: 10px;
-  }
-  
-  .signup-left a {
-    color: #ddd;
-    text-decoration: underline;
-  }
-  
-  /* Phần bên phải */
-  .signup-right {
-    width: 60%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-  }
-  
-  .signup-form {
-    background-color: #1e293b;
-    padding: 30px;
-    border-radius: 10px;
-    width: 100%;
-    max-width: 400px;
-    color: white;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-  }
-  
-  .signup-form h2 {
-    text-align: center;
-    font-size: 22px;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  
-  /* Input fields */
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    display: block;
-    font-weight: bold;
-    font-size: 14px;
-    margin-bottom: 5px;
-  }
-  
-  .form-group input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #334155;
-    border-radius: 5px;
-    background-color: #334155;
-    color: white;
-    font-size: 14px;
-  }
-  
-  .form-group input:focus {
-    border-color: #4f46e5;
-    outline: none;
-  }
-  
-  /* Checkbox */
-  .checkbox-group {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-  }
-  
-  .checkbox-group input {
-    margin-right: 10px;
-  }
-  
-  /* Captcha */
-  .captcha-group {
-    display: flex;
-    align-items: center;
-  }
-  
-  .captcha-group img {
-    height: 40px;
-    margin-left: 10px;
-  }
-  
-  /* Button */
-  .signup-button {
-    width: 100%;
-    background-color: #4f46e5;
-    padding: 12px;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-  }
-  
-  .signup-button:hover {
-    background-color: #4338ca;
-  }
-  
+/* Định dạng container chính */
+.register-container {
+  display: flex;
+  justify-content: center; /* Căn giữa theo chiều ngang */
+  align-items: center; /* Căn giữa theo chiều dọc */
+  height: 100vh; /* Chiều cao toàn màn hình */
+  background-color: #121212; /* Giữ nguyên màu nền */
+}
+
+/* Hai khối con (trái & phải) */
+.register-left,
+.register-right {
+  width: 50%; /* Đảm bảo hai khối có kích thước bằng nhau */
+  max-width: 400px; /* Giới hạn chiều rộng tối đa */
+  height: 450px; /* Đảm bảo chiều cao bằng nhau */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Căn giữa nội dung */
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  border-radius: 0px; /* Bo góc */
+}
+
+/* Phần chào mừng bên trái */
+.register-left {
+  background-color: #5a54f9; /* Giữ nguyên màu */
+  color: white;
+  border-top-left-radius: 20px;  /* Bo góc trên bên trái */
+  border-bottom-left-radius: 20px; /* Bo góc dưới bên trái */
+}
+
+/* Phần đăng ký bên phải */
+.register-right {
+  background-color: #1e1e2e;
+  color: white;
+  border-top-right-radius: 20px;  /* Bo góc trên bên phải */
+  border-bottom-right-radius: 20px; /* Bo góc dưới bên phải */
+}
+
+/* Định dạng form trong phần đăng ký */
+.register-right form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.register-right input {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  border: none;
+}
+
+/* Checkbox và điều khoản */
+.terms {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.terms input {
+  margin-right: 5px;
+}
+
+/* Nút đăng ký */
+button {
+  background-color: #5a54f9;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+/* Chỉnh lại form captcha */
+.captcha-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.captcha-input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.captcha-image {
+  width: 100px;
+  height: 40px;
+  border-radius: 5px;
+  background-color: #ddd; /* Tạm thời dùng màu nền xám */
+}
