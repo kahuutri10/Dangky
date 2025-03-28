@@ -1,73 +1,120 @@
-import React from "react";
-import "./SignUp.css"; // Import file CSS
+import React, { useState } from "react";
+import "./SignUp.css"; // Import CSS
 
 const SignUp = () => {
+  // State lưu thông tin nhập từ form
+  const [formData, setFormData] = useState({
+    fullName: "",
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    agreeTerms: false,
+    captcha: "",
+  });
+
+  // Xử lý thay đổi input
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData({
+      ...formData,
+      [name]: type === "checkbox" ? checked : value,
+    });
+  };
+
+  // Xử lý khi submit form
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Dữ liệu đăng ký:", formData);
+  };
+
   return (
-    <div className="signup-container">
-      {/* Phần bên trái */}
-      <div className="signup-left">
-        <h1>Chào mừng bạn!</h1>
+    <div className="register-container">
+      {/* Bên trái - Giới thiệu */}
+      <div className="register-left">
+        <h2>Chào mừng bạn!</h2>
         <p>Hãy tạo tài khoản để bắt đầu</p>
-        <p>
-          Đã có tài khoản? <a href="#">Quay lại đăng nhập</a>
-        </p>
+        <a href="/login">Quay lại đăng nhập</a>
       </div>
 
-      {/* Phần bên phải */}
-      <div className="signup-right">
-        <div className="signup-form">
-          <h2>Đăng ký</h2>
+      {/* Bên phải - Form đăng ký */}
+      <div className="register-right">
+        <h2>Đăng ký</h2>
+        <div className="form-container">
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              name="fullName"
+              placeholder="Họ và tên"
+              value={formData.fullName}
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="text"
+              name="username"
+              placeholder="Tên đăng nhập"
+              value={formData.username}
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="password"
+              name="password"
+              placeholder="Nhập mật khẩu"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="password"
+              name="confirmPassword"
+              placeholder="Xác nhận mật khẩu"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              required
+            />
 
-          {/* Form */}
-          <form>
-            <div className="form-group">
-              <label>Họ và tên</label>
-              <input type="text" placeholder="Nhập họ và tên" />
+            {/* Điều khoản sử dụng */}
+            <div className="terms">
+              <input
+                type="checkbox"
+                id="terms"
+                name="agreeTerms"
+                checked={formData.agreeTerms}
+                onChange={handleChange}
+                required
+              />
+              <label htmlFor="terms">Tôi đồng ý với điều khoản sử dụng</label>
             </div>
 
-            <div className="form-group">
-              <label>Tên đăng nhập</label>
-              <input type="text" placeholder="Nhập tên đăng nhập" />
-            </div>
-
-            <div className="form-group">
-              <label>Email</label>
-              <input type="email" placeholder="Nhập email của bạn" />
-            </div>
-
-            <div className="form-group">
-              <label>Nhập mật khẩu</label>
-              <input type="password" placeholder="Nhập mật khẩu" />
-            </div>
-
-            <div className="form-group">
-              <label>Xác nhận mật khẩu</label>
-              <input type="password" placeholder="Xác nhận lại mật khẩu" />
-            </div>
-
-            {/* Checkbox */}
-            <div className="checkbox-group">
-              <input type="checkbox" />
-              <span>
-                Tôi đồng ý với{" "}
-                <a href="#" className="text-indigo-400">
-                  điều khoản sử dụng
-                </a>
-              </span>
-            </div>
-
-            {/* Captcha */}
-            <div className="form-group captcha-group">
-              <label>Mã captcha</label>
-              <input type="text" placeholder="Nhập captcha" />
+            {/* Ô nhập mã captcha + Ảnh captcha */}
+            <div className="captcha-container">
+              <input
+                type="text"
+                name="captcha"
+                placeholder="Mã captcha"
+                value={formData.captcha}
+                onChange={handleChange}
+                required
+                className="captcha-input"
+              />
               <img
-                src="https://www.google.com/recaptcha/api/image"
-                alt="captcha"
+                src="https://via.placeholder.com/100x40" // Thay bằng link ảnh captcha thật
+                alt="Captcha"
+                className="captcha-image"
               />
             </div>
 
-            {/* Nút đăng ký */}
-            <button className="signup-button">Đăng ký</button>
+            <button type="submit">Đăng ký</button>
           </form>
         </div>
       </div>
